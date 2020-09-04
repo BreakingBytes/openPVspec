@@ -19,22 +19,22 @@ tmy weather dat file path: <filepath>
 etc: <...>
 transformers:
 - xfmr name: <str>
-  transformer spec ID: <enum>
+  transformer spec ID: <enum>            # xfmr specs are enumerated by ID at top level
   etc: <...>
   inverters:
   - inverter name: <str>
     AC collection loss: <float[%]>
     inverter count: <int>
-    inverter spec ID: <enum>
+    inverter spec ID: <enum>             # inverter specs are enumerated by ID at top level
     etc: <..>
     layouts:
     - layout name: <str>
       DC collection loss: <float[%]>
-      PV module spec ID: <enum>
+      PV module spec ID: <enum>          # PV module specs are enumerated by ID at top level
       PV modules per string: <int>
       gcr: <float>
       module tilt: <float[degrees]>
-      mounting type ID: <enum>
+      mounting type ID: <enum>           # mounting system specs are enumerated by ID at top level
       number of strings: <int>
       number strings per row: <int>
       row in back of PV system: <bool>
@@ -42,9 +42,9 @@ transformers:
       system azimuth: <float[degrees]>
       thermal parameters: '<thermal model: {Uc: <float>, Uv: <float>}>'
       etc: <...>
-    - layout name: <str>
+    - layout name: <str>                 # next layout
       etc: <...>
-  - inverter name: <str>
+  - inverter name: <str>                 # next inverter
     etc: <...>
-- xfmr name: <str>
+- xfmr name: <str>                       # next xfmr
   etc: <...>
