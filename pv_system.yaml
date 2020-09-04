@@ -1,0 +1,50 @@
+PV module specs:
+  <PV module ID>: <ModuleSpec>
+  etc: <...>
+albedo per month: <array of floats [1x12]>
+elevation: <float[meters]>
+etc: <...>
+inverter specs:
+  <inverter ID>: <InverterSpec>
+  etc: <...>
+latitude: <float[degrees]>
+longitude: <float[degrees]>
+mounting type specs:
+  <mounting type ID>: <RackSpec>|<TrackerSpec>
+  etc: <...>
+soiling per month: <array of floats [1x12]>
+tmy weather dat file path: <filepath>
+transformer specs:
+  <xfmr ID>: <TransformerSpec>
+  etc: <...>
+transformers:
+- etc: <...>
+  inverters:
+  - AC collection loss: <float[%]>
+    etc: <..>
+    inverter count: <int>
+    inverter spec ID: <enum>
+    layouts:
+    - DC collection loss: <float[%]>
+      PV module spec ID: <enum>
+      PV modules per string: <int>
+      etc: <...>
+      gcr: <float>
+      module tilt: <float[degrees]>
+      mounting type ID: <enum>
+      name: <str>
+      number of strings: <int>
+      number strings per row: <int>
+      row in back of PV system: <bool>
+      row in front of PV system: <bool>
+      system azimuth: <float[degrees]>
+      thermal parameters: '<thermal model: {Uc: <float>, Uv: <float>}>'
+    - etc: <...>
+      name: <str>
+    name: <str>
+  - etc: <...>
+    name: <str>
+  name: <str>
+  transformer spec ID: <enum>
+- etc: <...>
+  name: <str>
