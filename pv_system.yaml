@@ -1,3 +1,6 @@
+# Open PV system specification
+
+# component specifications
 PV module specs:
   <PV module ID>: <ModuleSpec>
   etc: <...>
@@ -8,43 +11,49 @@ mounting type specs:
   <mounting type ID>: <RackSpec>|<TrackerSpec>
   etc: <...>
 transformer specs:
-  <xfmr ID>: <TransformerSpec>
+  <transformer ID>: <TransformerSpec>
   etc: <...>
-albedo per month: <array of floats [1x12]>
-elevation: <float[meters]>
+
+# site parameters
 latitude: <float[degrees]>
 longitude: <float[degrees]>
-soiling per month: <array of floats [1x12]>
+elevation: <float[meters]>
 tmy weather dat file path: <filepath>
+albedo per month: <array of floats [1x12]>
+soiling per month: <array of floats [1x12]>
 etc: <...>
+
+# layout parameters
 transformers:
-- xfmr name: <str>
-  transformer spec ID: <enum>            # xfmr specs are enumerated by ID at top level
+- transformer name: <str>
+  transformer spec ID: <enum>            # transformer specs are enumerated by ID at top level
+  transformer count: <int>               # identical transformers are scaled linearly
   etc: <...>
   inverters:
   - inverter name: <str>
-    AC collection loss: <float[%]>
-    inverter count: <int>
     inverter spec ID: <enum>             # inverter specs are enumerated by ID at top level
+    inverter count: <int>                # identical inverters are scaled linearly
+    AC collection loss: <float[%]>
     etc: <..>
-    layouts:
-    - layout name: <str>
-      DC collection loss: <float[%]>
+    layouts:                             # number of layouts per inverter must be <= number of MPPTs
+    - layout name: <str>                 # identical layouts are scale linearly
+      layout count: <int>
       PV module spec ID: <enum>          # PV module specs are enumerated by ID at top level
-      PV modules per string: <int>
-      gcr: <float>
-      module tilt: <float[degrees]>
       mounting type ID: <enum>           # mounting system specs are enumerated by ID at top level
-      number of strings: <int>
-      number strings per row: <int>
-      row in back of PV system: <bool>
-      row in front of PV system: <bool>
-      system azimuth: <float[degrees]>
+      system azimuth: <float[degrees]>   # fixed tilt: normal to surface, trackers: axes
+      module tilt: <float[degrees]>
+      gcr: <float>
+      PV modules per string: <int>
+      number of strings: <int>           # must be a multiple of strings per row
+      row in front of PV system: <bool>  # is this in the middle of the system or not
+      row in back of PV system: <bool>   # useful for bifacial
+      number strings per row: <int>      # number of strings must be a multiple of this
       thermal parameters: '<thermal model: {Uc: <float>, Uv: <float>}>'
+      DC collection loss: <float[%]>
       etc: <...>
     - layout name: <str>                 # next layout
       etc: <...>
   - inverter name: <str>                 # next inverter
     etc: <...>
-- xfmr name: <str>                       # next xfmr
+- transformer name: <str>                # next transformer
   etc: <...>
