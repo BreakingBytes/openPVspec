@@ -8,19 +8,19 @@ inverter specs:
   <inverter ID>: <InverterSpec>
   etc: <...>
 mounting type specs:
-  <mounting type ID>: <RackSpec>|<TrackerSpec>
+  <mounting type ID>: <RackSpec|TrackerSpec|...>
   etc: <...>
 transformer specs:
   <transformer ID>: <TransformerSpec>
   etc: <...>
 
 # site parameters
-latitude: <float[degrees]>
-longitude: <float[degrees]>
-elevation: <float[meters]>
+latitude: <float(degrees)>
+longitude: <float(degrees)>
+elevation: <float(meters)>
 tmy weather dat file path: <filepath>
-albedo per month: <array of floats [1x12]>
-soiling per month: <array of floats [1x12]>
+albedo per month: <float|floats[12]>     # constant or monthly
+soiling per month: <float|floats[12]>    # constant or monthly
 etc: <...>
 
 # layout parameters
@@ -33,15 +33,16 @@ transformers:
   - inverter name: <str>
     inverter spec ID: <enum>             # inverter specs are enumerated by ID at top level
     inverter count: <int>                # identical inverters are scaled linearly
-    AC collection loss: <float[%]>
+    AC collection loss: <float(%)>
     etc: <..>
-    layouts:                             # number of layouts per inverter must be <= number of MPPTs
+    layouts:
     - layout name: <str>                 # identical layouts are scale linearly
-      layout count: <int>
+      layout count: <int>                # use list to assign to different inverter inputs
+      inverter input: <int|int[ct]>      # 0-based, must be less than number of inverter MPPTs
       PV module spec ID: <enum>          # PV module specs are enumerated by ID at top level
       mounting type ID: <enum>           # mounting system specs are enumerated by ID at top level
-      system azimuth: <float[degrees]>   # fixed tilt: normal to surface, trackers: axes
-      module tilt: <float[degrees]>
+      system azimuth: <float(degrees)>   # fixed tilt: normal to surface, trackers: axes
+      module tilt: <float(degrees)>
       gcr: <float>
       PV modules per string: <int>
       number of strings: <int>           # must be a multiple of strings per row
@@ -49,7 +50,7 @@ transformers:
       row in back of PV system: <bool>   # useful for bifacial
       number strings per row: <int>      # number of strings must be a multiple of this
       thermal parameters: '<thermal model: {Uc: <float>, Uv: <float>}>'
-      DC collection loss: <float[%]>
+      DC collection loss: <float(%)>
       etc: <...>
     - layout name: <str>                 # next layout
       etc: <...>

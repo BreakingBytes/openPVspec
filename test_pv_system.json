@@ -8,19 +8,19 @@
     "etc": "<...>"
   },
   "mounting type specs": {
-    "<mounting type ID>": "<RackSpec>|<TrackerSpec>",
+    "<mounting type ID>": "<RackSpec|TrackerSpec|...>",
     "etc": "<...>"
   },
   "transformer specs": {
     "<transformer ID>": "<TransformerSpec>",
     "etc": "<...>"
   },
-  "latitude": "<float[degrees]>",
-  "longitude": "<float[degrees]>",
-  "elevation": "<float[meters]>",
+  "latitude": "<float(degrees)>",
+  "longitude": "<float(degrees)>",
+  "elevation": "<float(meters)>",
   "tmy weather dat file path": "<filepath>",
-  "albedo per month": "<array of floats [1x12]>",
-  "soiling per month": "<array of floats [1x12]>",
+  "albedo per month": "<float|floats[12]>",
+  "soiling per month": "<float|floats[12]>",
   "etc": "<...>",
   "transformers": [
     {
@@ -33,16 +33,17 @@
           "inverter name": "<str>",
           "inverter spec ID": "<enum>",
           "inverter count": "<int>",
-          "AC collection loss": "<float[%]>",
+          "AC collection loss": "<float(%)>",
           "etc": "<..>",
           "layouts": [
             {
               "layout name": "<str>",
               "layout count": "<int>",
+              "inverter input": "<int|int[ct]>",
               "PV module spec ID": "<enum>",
               "mounting type ID": "<enum>",
-              "system azimuth": "<float[degrees]>",
-              "module tilt": "<float[degrees]>",
+              "system azimuth": "<float(degrees)>",
+              "module tilt": "<float(degrees)>",
               "gcr": "<float>",
               "PV modules per string": "<int>",
               "number of strings": "<int>",
@@ -50,7 +51,7 @@
               "row in back of PV system": "<bool>",
               "number strings per row": "<int>",
               "thermal parameters": "<thermal model: {Uc: <float>, Uv: <float>}>",
-              "DC collection loss": "<float[%]>",
+              "DC collection loss": "<float(%)>",
               "etc": "<...>"
             },
             {

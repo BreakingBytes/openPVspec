@@ -29,7 +29,7 @@ def test_pv_spec():
         z = get_pv_spec(f0)
     assert x == z
     assert y == z
-    with pathlib.Path('pv_system.json').open() as f1:
+    with pathlib.Path('test_pv_system.json').open() as f1:
         w = json.load(f1)
     assert x == w
     assert y == w
@@ -37,5 +37,6 @@ def test_pv_spec():
 
 
 if __name__ == '__main__':
-    with pathlib.Path('pv_system.json').open('w') as f2:
+    x = get_pv_spec('pv_system.yaml')
+    with pathlib.Path('test_pv_system.json').open('w') as f2:
         json.dump(x, f2, indent=2)
