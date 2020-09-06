@@ -18,7 +18,10 @@ transformer specs:
 latitude: <float(degrees)>
 longitude: <float(degrees)>
 elevation: <float(meters)>
-tmy weather dat file path: <filepath>
+GIS shapefile path: <filepath>|<null>    # if null assume horizontal
+HOR file path: <filepath>|<null>         # if null assume horizon incl. in weather
+irradiance weather file path: <filepath(s)>
+weather file formats: <enum>|<newspec>   # should be list if more than one weather file
 albedo per month: <float|floats[12]>     # constant or monthly
 soiling per month: <float|floats[12]>    # constant or monthly
 etc: <...>
@@ -37,6 +40,7 @@ transformers:
     etc: <..>
     layouts:
     - layout name: <str>                 # identical layouts are scale linearly
+      layout coordinates: <point>        # (easting, northing) from (lat, lon)
       layout count: <int>                # use list to assign to different inverter inputs
       inverter input: <int|int[ct]>      # 0-based, must be less than number of inverter MPPTs
       PV module spec ID: <enum>          # PV module specs are enumerated by ID at top level
@@ -58,3 +62,6 @@ transformers:
     etc: <...>
 - transformer name: <str>                # next transformer
   etc: <...>
+
+# shade objects
+shade objects: <shade object spec>       #
