@@ -18,7 +18,10 @@
   "latitude": "<float(degrees)>",
   "longitude": "<float(degrees)>",
   "elevation": "<float(meters)>",
-  "tmy weather dat file path": "<filepath>",
+  "GIS shapefile path": "<filepath>|<null>",
+  "HOR file path": "<filepath>|<null>",
+  "irradiance weather file path": "<filepath(s)>",
+  "weather file formats": "<enum>|<newspec>",
   "albedo per month": "<float|floats[12]>",
   "soiling per month": "<float|floats[12]>",
   "etc": "<...>",
@@ -38,6 +41,7 @@
           "layouts": [
             {
               "layout name": "<str>",
+              "layout coordinates": "<point>",
               "layout count": "<int>",
               "inverter input": "<int|int[ct]>",
               "PV module spec ID": "<enum>",
@@ -70,5 +74,6 @@
       "transformer name": "<str>",
       "etc": "<...>"
     }
-  ]
+  ],
+  "shade objects": "<shade object spec>"
 }
