@@ -75,5 +75,49 @@
       "etc": "<...>"
     }
   ],
-  "shade objects": "<shade object spec>"
+  "shade objects": "<shade object spec>",
+  "calcultion settings": [
+    {
+      "include thermal": "<bool>"
+    },
+    {
+      "include spectral": "<bool>"
+    },
+    {
+      "include bifacial": "<bool>"
+    },
+    {
+      "include IAM": "<bool>"
+    },
+    {
+      "include diffuse IAM": "<bool>"
+    },
+    {
+      "include ground diffuse": "<bool>"
+    },
+    {
+      "include panel surface VF": "<bool>"
+    },
+    {
+      "include ground-sky VF": "<bool>"
+    },
+    {
+      "always decompose GHI": "<bool>"
+    },
+    {
+      "use Erbs decomposition": "<bool>"
+    },
+    {
+      "use Hay-Davies transposition": "<bool>"
+    },
+    {
+      "use POA GTI-DIRINT": "<bool>"
+    },
+    {
+      "include shade objects": "<bool>"
+    },
+    {
+      "etc": "<...>"
+    }
+  ]
 }

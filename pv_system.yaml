@@ -64,4 +64,21 @@ transformers:
   etc: <...>
 
 # shade objects
-shade objects: <shade object spec>       #
+shade objects: <shade object spec>       # buildings, trees, poles, overhead wires, etc.
+
+# settings & options to toggle different calculations
+calcultion settings:
+- include thermal: <bool>
+- include spectral: <bool>
+- include bifacial: <bool>
+- include IAM: <bool>
+- include diffuse IAM: <bool>            # use interate IAM over diffuse
+- include ground diffuse: <bool>
+- include panel surface VF: <bool>       # can the panel surface see all ground & sky?
+- include ground-sky VF: <bool>          # can the ground see all of the sky?
+- always decompose GHI: <bool>           # ignore given DNI & DHI, and calculate from GHI
+- use Erbs decomposition: <bool>         # if false then use DIRINT, may require more inputs
+- use Hay-Davies transposition: <bool>   # if false then use Perez-Ineichen, may require more inputs
+- use POA GTI-DIRINT: <bool>             # if true and POA is given, then ignore GHI and other inputs
+- include shade objects: <bool>
+- etc: <...>
